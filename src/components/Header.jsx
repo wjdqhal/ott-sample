@@ -9,6 +9,7 @@ const mainMenu = [
     { id: 3, menu: "NEW 요즘 대세 콘텐츠", path: "/new" },
     { id: 4, menu: "애니메이션", path: "/animate" },
     { id: 5, menu: "찜리스트", path: "/heart" },
+    { id: 6, menu: "스포츠", path: "/sports" },
 ]
 const familys = ["아빠", "엄마", "아들", "딸"];
 
@@ -35,13 +36,14 @@ export const Header = () => {
     }
 
     const isHome = location.pathname === "/";
+    const isSports = location.pathname === "/sports";
     console.log(isHome);
     return (
-        <header className={`fixed z-10000 w-full py-5 ${isHome ? "bg-transparent" : "bg-green-500"}`}>
-            <div className="inner flex justify-between items-center">
-                <div className="header-left flex gap-10 items-center">
+        <header className={`${isSports ? "sticky top-0" : "fixed"} z-10000 w-full py-5 ${isHome ? "bg-transparent" : "bg-green-500"}`}>
+            <div className="inner flex flex-wrap gap-4 px-4 justify-between items-center">
+                <div className="header-left flex flex-wrap gap-4 lg:gap-10 items-center">
                     <h1><Link to="/"><img src="/images/logo.png" alt="" className='w-40' /></Link></h1>
-                    <ul className='flex gap-5'>
+                    <ul className='flex flex-wrap gap-x-5 gap-y-2' aria-label="메인 메뉴">
                         {mainMenu.map((menu) => (
                             <li key={menu.id}>
                                 <Link className={` ${isHome ? "text-white" : "text-black"}`}
